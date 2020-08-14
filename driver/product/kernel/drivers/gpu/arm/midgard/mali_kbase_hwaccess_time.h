@@ -1,6 +1,6 @@
 /*
  *
- * (C) COPYRIGHT 2014,2018-2019 ARM Limited. All rights reserved.
+ * (C) COPYRIGHT 2014,2018-2020 ARM Limited. All rights reserved.
  *
  * This program is free software and is provided to you under the terms of the
  * GNU General Public License version 2 as published by the Free Software
@@ -33,7 +33,7 @@
  * @kbdev:		Device pointer
  * @cycle_counter:	Pointer to u64 to store cycle counter in
  * @system_time:	Pointer to u64 to store system time in
- * @ts:			Pointer to struct timespec64 to store current monotonic
+ * @ts:			Pointer to struct timespec to store current monotonic
  *			time in
  */
 void kbase_backend_get_gpu_time(struct kbase_device *kbdev, u64 *cycle_counter,

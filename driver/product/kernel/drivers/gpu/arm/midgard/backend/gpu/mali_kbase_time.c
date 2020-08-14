@@ -1,6 +1,6 @@
 /*
  *
- * (C) COPYRIGHT 2014-2016,2018-2019 ARM Limited. All rights reserved.
+ * (C) COPYRIGHT 2014-2016,2018-2020 ARM Limited. All rights reserved.
  *
  * This program is free software and is provided to you under the terms of the
  * GNU General Public License version 2 as published by the Free Software
@@ -60,7 +60,11 @@ void kbase_backend_get_gpu_time(struct kbase_device *kbdev, u64 *cycle_counter,
 
 	/* Record the CPU's idea of current time */
 	if (ts != NULL)
+#if (KERNEL_VERSION(4, 17, 0) > LINUX_VERSION_CODE)
+		*ts = ktime_to_timespec64(ktime_get_raw());
+#else
 		ktime_get_raw_ts64(ts);
+#endif
 
 	kbase_pm_release_gpu_cycle_counter(kbdev);
 }
