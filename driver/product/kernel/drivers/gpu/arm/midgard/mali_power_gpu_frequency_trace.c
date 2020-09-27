@@ -1,6 +1,6 @@
 /*
  *
- * (C) COPYRIGHT 2014-2017 ARM Limited. All rights reserved.
+ * (C) COPYRIGHT 2020 ARM Limited. All rights reserved.
  *
  * This program is free software and is provided to you under the terms of the
  * GNU General Public License version 2 as published by the Free Software
@@ -20,27 +20,8 @@
  *
  */
 
-/**
- * Power management configuration
- *
- * Attached value: pointer to @ref kbase_pm_callback_conf
- * Default value: See @ref kbase_pm_callback_conf
- */
-#define POWER_MANAGEMENT_CALLBACKS (&pm_callbacks)
-
-/**
- * Platform specific configuration functions
- *
- * Attached value: pointer to @ref kbase_platform_funcs_conf
- * Default value: See @ref kbase_platform_funcs_conf
- */
-#define PLATFORM_FUNCS (NULL)
-
-extern struct kbase_pm_callback_conf pm_callbacks;
-
-/**
- * Autosuspend delay
- *
- * The delay time (in milliseconds) to be used for autosuspend
- */
-#define AUTO_SUSPEND_DELAY (100)
+/* Create the trace point if not configured in kernel */
+#ifndef CONFIG_TRACE_POWER_GPU_FREQUENCY
+#define CREATE_TRACE_POINTS
+#include "mali_power_gpu_frequency_trace.h"
+#endif
